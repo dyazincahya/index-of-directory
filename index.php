@@ -1,5 +1,5 @@
 <?php
-    function exceptFile($fn){
+    function hiddenFile($fn){
         $f=strtoupper($fn);
         $ret=true;
         switch ($f) {
@@ -104,7 +104,7 @@
                         $i=1;
                         $files = array_diff(scandir("."), array('.','..'));
                         foreach($files as $key => $file){
-                            if(exceptFile($file)){
+                            if(hiddenFile($file)){
                                 echo '
                                     <tr>
                                       <td>'. ($i) .'</td>
