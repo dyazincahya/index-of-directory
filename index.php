@@ -2,6 +2,7 @@
     function icon(){
         return "https://4.bp.blogspot.com/-bJxsvMn8aW4/VxVw_6yUmdI/AAAAAAAAJFU/W4csasDfxagdgzT9-j-HHpIKh-ETQcUfgCPcB/s320/nature%2Bjpg.jpg";   
     }
+    
     function hiddenFile($fn){
         $f=strtoupper($fn);
         $ret=true;
