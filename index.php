@@ -105,13 +105,13 @@
                 </thead>
                 <tbody>
                     <?php
-                        $i=1;
+                        $i=0;
                         $files = array_diff(scandir("."), array('.','..'));
                         foreach($files as $key => $file){
                             if(hiddenFile($file)){
                                 echo '
                                     <tr>
-                                      <td>'. ($i) .'</td>
+                                      <td>'. ($i+1) .'</td>
                                       <td>'. autoLink($file) .'</td>
                                       <td>'. getSize($file) .'</td>
                                       <td>'. lastModify($file) .'</td>
@@ -119,6 +119,13 @@
                                 ';
                                 $i++;
                             }
+                        }
+                        if($i === 0){
+                            echo '
+                                <tr>
+                                  <td colspan="4">No data!</td>
+                                </tr>
+                            ';
                         }
                     ?>
                 </tbody>
