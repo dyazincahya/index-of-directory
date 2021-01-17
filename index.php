@@ -39,7 +39,7 @@
     function autoLink($fn){
         $z = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         
-        return '<a href="'. $z . $fn .'" class="kc">'. $fn .'</a>';
+        return '<a href="'. $z .'?a='. $fn .'" class="kc">'. $fn .'</a>';
     }
     
     function currentUrl(){
@@ -90,48 +90,64 @@
         }
     </style>
 </head>
-<body style="margin-top:20px;">
-    <div class="container-md">
-        <h1>Index of /<span style="font-size:15px;"><?=currentUrl();?></span></h1>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th>NO</th>
-                      <th>NAME</th>
-                      <th>SIZE</th>
-                      <th>LAST UPDATE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $i=0;
-                        $files = array_diff(scandir("."), array('.','..'));
-                        foreach($files as $key => $file){
-                            if(hiddenFile($file)){
+<body>
+    <?php if(!isset($_REQUEST['a'])) {?>
+        <div class="container-md" style="margin-top:20px;">
+            <h1>Index of /<span style="font-size:15px;"><?=currentUrl();?></span></h1>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>NAME</th>
+                          <th>SIZE</th>
+                          <th>LAST UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $i=0;
+                            $files = array_diff(scandir("."), array('.','..'));
+                            foreach($files as $key => $file){
+                                if(hiddenFile($file)){
+                                    echo '
+                                        <tr>
+                                          <td>'. ($i+1) .'</td>
+                                          <td>'. autoLink($file) .'</td>
+                                          <td>'. getSize($file) .'</td>
+                                          <td>'. lastModify($file) .'</td>
+                                        </tr>
+                                    ';
+                                    $i++;
+                                }
+                            }
+                            if($i === 0){
                                 echo '
                                     <tr>
-                                      <td>'. ($i+1) .'</td>
-                                      <td>'. autoLink($file) .'</td>
-                                      <td>'. getSize($file) .'</td>
-                                      <td>'. lastModify($file) .'</td>
+                                      <td colspan="4">No data!</td>
                                     </tr>
                                 ';
-                                $i++;
                             }
-                        }
-                        if($i === 0){
-                            echo '
-                                <tr>
-                                  <td colspan="4">No data!</td>
-                                </tr>
-                            ';
-                        }
-                    ?>
-                </tbody>
-            </table>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    <?php } else { ?>
+        <div style="margin: 0; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none;">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #27AE61;">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="https://<?=currentUrl();?>"><b>&laquo; BACK TO</b> /<span style="font-size:15px;"><?=currentUrl();?></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+            </nav>
+            <div>
+                <iframe src="https://<?=currentUrl();?>/<?=$_REQUEST['a'];?>" title="description" height="100%" width="100%" style="border: none; height: 100vh;">
+            </div>
+        </div>
+    <?php } ?>
     
     <footer class="text-muted py-5">
         <div class="container">
