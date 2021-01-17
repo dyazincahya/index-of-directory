@@ -22,6 +22,9 @@
             case "INDEX.PHP":
                 $ret=false;
             break;
+            case "404.PHP":
+                $ret=false;
+            break;
             default:
                 $ret=true;
         }
@@ -58,6 +61,14 @@
         $pow = min($pow, count($units) - 1);
     
         return round($bytes, $precision) . ' ' . $units[$pow];
+    }
+    
+    function err404($fn){
+        $files = array_diff(scandir("."), array('.','..'));
+        $key = array_search ($fn, $files);
+        
+        return $key;
+        
     }
 ?>
 <!doctype html>
@@ -134,7 +145,7 @@
             </div>
         </div>
     <?php } else { ?>
-        <div style="margin: 0; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none;">
+        <div style="overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none;">
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #27AE61;">
               <div class="container-fluid">
                 <a class="navbar-brand" href="https://<?=currentUrl();?>"><b>&laquo; BACK TO</b> /<span style="font-size:15px;"><?=currentUrl();?></a>
@@ -144,7 +155,12 @@
               </div>
             </nav>
             <div>
-                <iframe src="https://<?=currentUrl();?>/<?=$_REQUEST['a'];?>" title="description" height="100%" width="100%" style="border: none; height: 100vh;">
+                <?php if(err404($_REQUEST['a']) !== false){ ?>
+                    <iframe src="https://<?=currentUrl();?>/<?=$_REQUEST['a'];?>" title="description" height="100%" width="100%" style="border: none; height: 100vh;">
+                <?php } else { 
+                    header('Location: http://'. currentUrl() . '/' . $_REQUEST['a']);
+                    exit;
+                } ?>
             </div>
         </div>
     <?php } ?>
