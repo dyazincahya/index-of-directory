@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/dyazincahya/index-of-directory/blob/main/ss2.png)
+![Screenshot](https://github.com/dyazincahya/index-of-directory/raw/main/assets/img/ss/1.png)
 
 # index-of-directory
 Display directory
