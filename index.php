@@ -86,7 +86,7 @@
                 <?php if(err404($_REQUEST['a']) !== false){ ?>
                     <iframe src="<?=iframeUrl($_REQUEST['a']);?>" title="description" height="100%" width="100%" style="border: none; height: 100vh;">
                 <?php } else { 
-                    header('Location: http://'. currentUrl() . '/' . $_REQUEST['a']);
+                    header('Location: '. currentUrl());
                     exit;
                 } ?>
             </div>
