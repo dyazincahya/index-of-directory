@@ -1,13 +1,4 @@
-<?php
-    function icon(){
-        return "https://4.bp.blogspot.com/-bJxsvMn8aW4/VxVw_6yUmdI/AAAAAAAAJFU/W4csasDfxagdgzT9-j-HHpIKh-ETQcUfgCPcB/s320/nature%2Bjpg.jpg";   
-    }
-    function currentUrl(){
-        $z = $_SERVER["HTTP_HOST"];
-        
-        return $z;
-    }
-?>
+<?php require_once('helper.php'); ?>
 
 <!doctype html>
 <html lang="en" class="h-100">
@@ -18,7 +9,7 @@
     <meta name="author" content="Kang Cahya">
     <meta name="generator" content="Hugo 0.79.0">
     <meta name="theme-color" content="#27AE61">
-    <title>Error 404 - <?=currentUrl();?></title>
+    <title>Error 404 - <?=currentHost();?></title>
 
     <link rel="canonical" href="https://kang-cahya.com">
 
@@ -124,7 +115,7 @@
     <h1>ERROR 404 - PAGE NOT FOUND.</h1>
     <p class="lead">The requested URL was not found on this server. Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.</p>
     <p class="lead">
-      <a href="https://<?=currentUrl();?>" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Back To Home</a>
+      <a href="<?=currentUrl();?>" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Back To Home</a>
     </p>
   </main>
 
