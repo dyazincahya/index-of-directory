@@ -76,7 +76,7 @@
         <div style="overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none;">
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #27AE61;">
               <div class="container-fluid">
-                <a class="navbar-brand" href="https://<?=currentUrl();?>"><b>&laquo; BACK TO</b> /<span style="font-size:15px;"><?=currentUrl();?></a>
+                <a class="navbar-brand" href="<?=currentUrl();?>"><b>&laquo; BACK TO</b> /<span style="font-size:15px;"><?=currentHost();?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
