@@ -9,7 +9,7 @@ Display directory
 ### Instalation
 - Make some Project Folder in your ```Host```
 - Move or copy [assets](https://github.com/dyazincahya/index-of-directory/tree/main/assets), [data-public](https://github.com/dyazincahya/index-of-directory/tree/main/data-public), [.htaccess](https://github.com/dyazincahya/index-of-directory/blob/main/.htaccess), [404.php](https://github.com/dyazincahya/index-of-directory/blob/main/404.php) and [config.php](https://github.com/dyazincahya/index-of-directory/blob/main/config.php), [helper.php](https://github.com/dyazincahya/index-of-directory/blob/main/helper.php) and [index.php](https://github.com/dyazincahya/index-of-directory/blob/main/index.php)  to Project Folder .
-- [Setting configuration here](https://github.com/dyazincahya/index-of-directory/blob/main/config.php)
+- Setting [config.php](https://github.com/dyazincahya/index-of-directory/blob/main/config.php) 
 - Access Project Folder in browser.
 - Done.
 
